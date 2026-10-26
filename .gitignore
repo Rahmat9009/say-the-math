@@ -1,0 +1,55 @@
+# Local dependencies and downloaded checkpoints
+.venv/
+venv/
+node_modules/
+models/
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+
+# Credentials, private configuration and personal files
+.env*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_dsa*
+*.docx
+*.xlsx
+*.pptx
+
+# Internal coordination, session records and research assets stay local
+handoffs/
+tasks/
+research/
+AGENTS.md
+BUILD_PLAN.md
+RESEARCH_NOTES.md
+SayTheMath-improvement-brief.md
+requirements-research.txt
+
+# Generated output, screen-reader installations/settings/logs and caches
+test-output/
+output/
+.playwright-cli/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+*.log
+tests/**/*.json
+tests/**/*.xml
+tests/integration/malformed-integral-source.png
+# Local research/diagnostic runners require excluded corpora or session assets
+tests/backend/browser-cancellation-check.js
+tests/backend/measure_*.py
+tests/backend/run_real_inference.py
+tests/frontend/NVDA-WALKTHROUGH.md
+tests/integration/cancellation-browser-checks.js
+tests/integration/default-cancellation-check.js
+tests/integration/pdf-browser-checks.js
+tests/integration/pdf-discovery-timeout-check.js
+tests/integration/uncertain-reading.js
+.DS_Store
+Thumbs.db

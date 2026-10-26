@@ -1,0 +1,13 @@
+# Runtime Python dependencies for Say the Math (tested on Windows 11, Python 3.12.10, CPU only).
+# setup_app.py installs torch/torchvision first from requirements-torch-*.txt (CPU wheels),
+# then this file constrained by requirements-lock.txt. The starter's proposed pins worked unchanged.
+torch==2.5.1
+torchvision==0.20.1
+pix2tex==0.1.4
+albumentations==1.4.24
+transformers==4.46.3
+tokenizers==0.20.3
+numpy==2.2.6
+Pillow==11.1.0
+pdfplumber==0.11.4
+pypdfium2==4.30.0

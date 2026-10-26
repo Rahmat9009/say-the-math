@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#163e36"><title>Say the Math — local equation reader</title><link rel="stylesheet" href="/style.css"><script src="/pdf.js" defer></script><script src="/app.js" defer></script></head>
+<body>
+  <a class="skip" href="#main">Skip to equation reader</a>
+  <header class="topbar"><a class="brand" href="/" aria-label="Say the Math home"><span class="brand-icon" aria-hidden="true">∑</span> Say the Math<span class="prototype">PROTOTYPE</span></a><button class="quiet" id="help-button" aria-expanded="false" aria-controls="keyboard-help">Keyboard help <span aria-hidden="true">↗</span></button></header>
+  <main id="main" tabindex="-1">
+    <section class="intro" aria-labelledby="page-title"><p class="eyebrow">PRINTED EQUATIONS. IN YOUR OWN WORDS.</p><h1 id="page-title">Math, within reach.</h1><p class="lede">Open an equation image, or explore automatically detected PDF candidates. Read with your screen reader, one part at a time.</p><p class="privacy"><span aria-hidden="true">●</span> Recognition stays on this computer. No image or PDF uploads to a cloud service.</p></section>
+    <aside id="keyboard-help" class="help" hidden>
+      <h2>Use the reader with a keyboard</h2>
+      <ol><li>Tab to <strong>Choose an image</strong> and press Enter. You can also paste an image with Control+V or Command+V.</li><li>Choose <strong>Read equation</strong>. Your screen reader announces when the result is ready.</li><li>Tab to <strong>Explore the equation</strong>. Use Up and Down to move between visible parts. Right expands a collapsed part, then enters it. Left collapses an expanded part, then returns to its parent. Home and End jump to the first and last visible parts.</li><li>Press Enter in the explorer to announce the current part again. Native MathML is also available under <strong>Recognized equation</strong>. Your screen reader may need focus/forms mode to send arrow keys to the explorer.</li></ol>
+      <p>Choose a PDF to try experimental discovery. Every page is listed: use the page selector and Previous/Next page. The candidate selector follows reading order; Previous/Next candidate can skip pages without candidates. Multi-line candidates are listed but not read. Automatic crops may be incomplete; missed regions cannot reliably be recovered without visual selection. Use an already-cropped printed-equation image as another input. Screen-reader compatibility still needs user testing.</p>
+      <h3>Adjust NVDA speech</h3>
+      <p>Say the Math uses your screen reader's current voice and speed. Choose what feels comfortable; this app does not change your speech preferences.</p>
+      <p>In NVDA, hold your NVDA key and Control, then press V to open Speech settings. Tab to Voice or Rate and use the arrow keys to adjust. Tab to OK and press Enter to apply, or press Escape to cancel. To choose another synthesizer, press NVDA+Control+S. Your NVDA key is Insert or Caps Lock, depending on your setup. Press Control on its own to stop speech.</p>
+    </aside>
+    <section class="card pdf-card" aria-labelledby="pdf-title">
+      <div class="section-heading"><h2 id="pdf-title">Explore a PDF</h2><span class="local-tag">EXPERIMENTAL</span></div>
+      <div class="pdf-body">
+        <p>Find candidate regions in a born-digital PDF, then read one on demand. Discovery can miss equations or cut them short. Every automatic region has <strong>completeness unknown</strong>, even with a higher-confidence reading.</p>
+        <p class="pdf-limitation">If an equation is missing or cut off, this version cannot reliably fix it without visual selection. Independent recovery has not been validated.</p>
+        <button id="choose-pdf" class="primary" disabled>Choose a PDF</button><input id="pdf-input" type="file" accept="application/pdf,.pdf" aria-label="PDF document" hidden>
+        <span class="small">Up to 50 MiB · 500 pages · held in memory only</span>
+        <p id="pdf-engine-status" class="small" role="status">Checking experimental PDF navigation…</p>
+        <div id="pdf-opening" hidden><p role="status">Discovering PDF candidate regions locally. No recognition runs until you choose Read equation.</p><button id="cancel-pdf-open" class="secondary">Cancel PDF opening</button></div>
+        <div id="pdf-navigation" hidden>
+          <div class="pdf-document-heading"><h3 id="pdf-document-title" tabindex="-1"></h3><button id="close-pdf" class="quiet">Close PDF</button></div>
+          <label for="pdf-pages">PDF pages (every page is listed)</label><select id="pdf-pages"></select>
+          <div class="pdf-controls"><button id="previous-page" class="secondary">Previous page</button><button id="next-page" class="secondary">Next page</button></div>
+          <h3 id="pdf-page-title" tabindex="-1"></h3><p id="pdf-page-status"></p><p id="pdf-page-reasons" class="small"></p>
+          <div id="pdf-candidate-controls" hidden>
+            <label for="pdf-candidates">Candidate regions on this page, in reading order</label><select id="pdf-candidates"></select>
+          </div>
+          <div class="pdf-controls"><button id="previous-candidate" class="secondary">Previous candidate</button><button id="next-candidate" class="secondary">Next candidate</button></div>
+          <p class="small">Candidate buttons may skip pages without candidates. Page controls always include every page.</p>
+          <div id="pdf-candidate-info" hidden>
+            <h3 id="pdf-candidate-title" tabindex="-1"></h3>
+            <p class="region-statement">Detected region: completeness unknown. The region may omit part of the equation.</p>
+            <h4>Surrounding text (may contain extraction errors)</h4><p id="pdf-context"></p>
+            <p id="pdf-layout-status"></p><p id="pdf-preview-status" class="small"></p><button id="read-pdf-candidate" class="primary" disabled>Read selected candidate</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="workspace">
+      <section class="card input-card" aria-labelledby="input-title"><div class="section-heading"><span class="step">01</span><h2 id="input-title">Start with an equation</h2></div>
+        <div class="drop-zone" id="drop-zone"><div class="image-icon" aria-hidden="true">⌜<span>∫</span>⌟</div><h3>One image. One equation.</h3><p>PNG, JPG or WebP · up to 8 MiB</p><button class="primary" id="choose-button">Choose an image <span aria-hidden="true">↗</span></button><input id="image-input" type="file" accept="image/png,image/jpeg,image/webp" hidden aria-label="Equation image"><p class="small">or paste an image from your clipboard</p></div>
+        <div id="image-preview" class="preview" hidden><div class="preview-meta"><span id="file-name"></span><button class="quiet" id="change-button">Change image</button><button class="quiet" id="reset-button">Clear image</button></div><img id="source-image" alt="Selected equation image. Its recognized reading will appear after processing."><p class="small">Original image · held in memory only</p></div>
+        <div class="input-footer"><p id="input-hint">Use a tight crop with the whole equation visible.</p><button id="read-button" class="primary" disabled>Read equation <span aria-hidden="true">→</span></button></div>
+        <p id="engine-status" class="engine-status" role="status">Checking the local reader…</p>
+        <button id="retry-status" class="quiet status-retry" type="button">Check local reader again</button>
+        <details id="setup-help"><summary>Set up or troubleshoot the local reader</summary><p>Run <code>Start-Windows.cmd</code> on Windows, or <code>./start.sh</code> on macOS/Linux. The first setup downloads the model and dependencies. After setup, recognition works without an internet connection.</p><p id="engine-detail"></p></details>
+      </section>
+      <section class="card output-card" aria-labelledby="result-title" aria-busy="false" id="output-card"><div class="section-heading"><span class="step">02</span><h2 id="result-title" tabindex="-1">Read & explore</h2><span class="local-tag">LOCAL</span></div>
+        <p id="output-region" class="region-statement" hidden>Detected region: completeness unknown. A higher-confidence transcription does not mean the region contains the whole equation.</p>
+        <div id="empty-state" class="empty-state"><span class="empty-equation" aria-hidden="true">a² + b² = c²</span><h3>A little more access.<br>A lot more understanding.</h3><p>Your equation, spoken reading and explorable structure will appear here.</p></div>
+        <div id="working-state" class="working-state" hidden><span class="spinner" aria-hidden="true"></span><h3>Reading the equation…</h3><p>The local reader is comparing three readings.</p><button id="cancel-button" class="secondary" type="button">Cancel recognition</button><p class="small">Cancel stops recognition at the next model step. Initial model loading and checkpoint checks cannot be interrupted. The usual recognition limit is 2 minutes; a timeout produces no reading.</p></div>
+        <div id="result" hidden>
+          <div id="confidence" class="confidence"><span class="status-dot" aria-hidden="true"></span><div><strong id="confidence-title"></strong><p id="confidence-text"></p></div></div>
+          <h3 class="label" id="recognized-label">Recognized equation</h3><div class="math-display" id="math-display" aria-labelledby="recognized-label"></div>
+          <div class="spoken-heading"><h3 class="label">Spoken reading</h3><button id="announce-button" class="quiet">Announce with screen reader <span aria-hidden="true">↗</span></button></div><p class="spoken" id="spoken-text"></p>
+          <div class="explore-heading"><h3 id="explore-title">Explore the equation</h3><span id="part-count" class="small"></span></div><p class="small" id="tree-help">Up/Down: visible parts. Right: expand or enter. Left: collapse or parent. Home/End: first/last visible part. Enter: announce again.</p>
+          <p id="structure-warning" class="structure-warning" hidden>The explorer shows only part of this equation because its structure is too large. The full mathematical display and spoken reading remain above.</p>
+          <div id="math-tree" role="tree" tabindex="0" aria-labelledby="explore-title" aria-describedby="tree-help"></div>
+          <div class="part-controls" role="group" aria-label="Move through the equation"><button class="secondary" id="parent-button">↑ Parent</button><button class="secondary" id="child-button">↓ Go deeper</button><button class="secondary" id="previous-button">← Previous part</button><button class="secondary" id="next-button">Next part →</button></div>
+          <details id="alternatives"><summary>Compare alternative readings</summary><p class="small">The same model may repeat a mistake. Agreement does not prove correctness.</p><div id="alternative-list"></div></details>
+          <details><summary>LaTeX transcription</summary><pre id="latex-text" tabindex="0"></pre><button id="copy-button" class="quiet">Copy LaTeX</button></details>
+        </div>
+      </section>
+    </div>
+    <p id="visible-message" class="message" tabindex="-1" hidden></p>
+    <button id="return-to-pdf" class="secondary" hidden>Return to PDF navigation</button>
+    <button id="return-to-input" class="secondary" hidden>Return to equation input</button>
+    <section class="scope-note" aria-labelledby="scope-title"><h2 id="scope-title">A reading aid. Always fallible.</h2><p>Recognition can change a minus sign, exponent or root. Higher confidence is an estimate, not a correctness check. Transcription supports single printed equation regions. PDF discovery is experimental, may miss equations and cannot establish crop completeness. Handwriting, photographs and multi-line recognition are outside the tested scope.</p></section>
+  </main>
+  <footer><span>Say the Math</span><span>Made for independent access to mathematics.</span><span>Local processing · No saved image history</span></footer>
+  <div id="announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+</body></html>

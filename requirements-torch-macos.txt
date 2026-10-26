@@ -1,0 +1,3 @@
+# macOS wheels from PyPI are CPU/MPS builds; the app runs on CPU.
+torch==2.5.1
+torchvision==0.20.1
