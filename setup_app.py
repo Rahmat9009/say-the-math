@@ -109,11 +109,11 @@ def install_node_packages():
     node = shutil.which('node')
     npm = shutil.which('npm')
     if not node or not npm:
-        fail('Node.js 18 or newer is required (https://nodejs.org). Install it, then run setup again.')
+        fail('Node.js 22 or newer is required (https://nodejs.org). Install it, then run setup again.')
     r = subprocess.run([node, '--version'], capture_output=True, text=True)
     major = int(r.stdout.strip().lstrip('v').split('.')[0]) if r.returncode == 0 else 0
-    if major < 18:
-        fail(f'Node.js {r.stdout.strip()} is too old; version 18 or newer is required.')
+    if major < 22:
+        fail(f'Node.js {r.stdout.strip()} is too old; version 22 or newer is required.')
     run([npm, 'ci', '--ignore-scripts', '--no-audit', '--no-fund', '--omit=dev'], cwd=str(ROOT))
 
 

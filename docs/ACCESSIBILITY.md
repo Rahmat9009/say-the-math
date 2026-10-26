@@ -38,6 +38,29 @@ are optional user choices, not requirements or settings enforced by this app.
 
 ## Remaining manual checks
 
+The release follow-up uses short, one-at-a-time listening checkpoints. Before
+marking a checkpoint complete, record what the listener actually heard, including
+silence, clipping, duplication or interruption. Speech Viewer and browser output
+are diagnostic evidence only. General positive feedback does not confirm every
+equation word, warning or focus target. Preserve existing speech preferences.
+
+The listener ended the current NVDA session before the warning checkpoint.
+Remaining audible checks below are pending, not failed or passed. NVDA was left
+closed and its existing preferences were not reset for publication.
+
+| Audible release checkpoint | Evidence status |
+| --- | --- |
+| General voice clarity and comfort | Previously user-confirmed; no voice/rate override |
+| Reach Choose an image by keyboard | Listener reported hearing the written label clearly; exact utterance not transcribed |
+| Load fraction and report the focused control | Listener reported successful loading; exact focus announcement remains unconfirmed |
+| Hear equation words | Listener reported listening carefully and that the reading worked well; exact equation words remain unrecorded |
+| Hear uncertainty and fallibility warning | New release session pending |
+| Numerator navigation and repeat | New release session pending |
+| Denominator navigation and repeat | New release session pending |
+| Leave explorer and recover input/error focus | New release session pending |
+| Hear PDF completeness separately from transcription confidence | New release session pending |
+| Independent blind-user task completion | Pending; not inferred from guided testing |
+
 - Record actual equation, confidence and structural-role utterances for a fraction,
   exponent/root and integral; listen for repetition, omission and interruption.
 - Check file-picker cancellation, result/error focus, parent/child/leaf navigation,

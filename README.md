@@ -16,7 +16,8 @@ The user's existing screen reader supplies voice and retains its own preferences
 ## Install and run
 
 Tested on Windows 11 with 64-bit Python 3.12 and Node.js 24. The setup also accepts
-Python 3.11; keep the project path short on Windows. Install Python/Node first,
+Python 3.11; Node.js 22 or newer is required by the locked dependencies.
+Keep the project path short on Windows. Install Python/Node first,
 then clone into a new folder:
 
 ```powershell
@@ -130,6 +131,8 @@ transcripts. [Testing instructions](docs/TESTING.md) distinguish real inference,
 isolated test doubles and optional research-fixture checks.
 [Release checks](docs/RELEASE_CHECKS.md) record the executed publication checks
 and their limits. These checks are regression diagnostics, not accuracy estimates.
+The [fresh Windows installation record](docs/FRESH_INSTALL.md) covers a new
+environment, fresh dependency/checkpoint downloads and actual running-app checks.
 
 ## Model downloads and attribution
 

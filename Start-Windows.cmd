@@ -35,7 +35,7 @@ goto run
 :no_python
 echo.
 echo Python 3.12 or 3.11 (64-bit) was not found. Install it from https://www.python.org/downloads/
-echo and Node.js 18 or newer from https://nodejs.org/, then run Start-Windows.cmd again.
+echo and Node.js 22 or newer from https://nodejs.org/, then run Start-Windows.cmd again.
 pause
 exit /b 1
 

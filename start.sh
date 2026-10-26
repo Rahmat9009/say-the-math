@@ -18,7 +18,7 @@ if [ "$needs_setup" = "1" ]; then
     if command -v "$cand" >/dev/null 2>&1; then PY="$cand"; break; fi
   done
   if [ -z "$PY" ]; then
-    echo "Python 3.12 or 3.11 was not found. Install it and Node.js 18+, then run ./start.sh again." >&2
+    echo "Python 3.12 or 3.11 was not found. Install it and Node.js 22+, then run ./start.sh again." >&2
     exit 1
   fi
   "$PY" "setup_app.py"

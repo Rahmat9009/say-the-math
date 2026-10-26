@@ -1,5 +1,10 @@
 # Release checks — 2026-10-26
 
+The follow-up [fresh-installation release record](FRESH_INSTALL.md) covers the
+Node 22+ setup alignment, entirely new Windows installation, new checkpoint
+downloads and subsequent real-app checks. The results below are the earlier
+initial-publication checks and retain their original scope.
+
 Executed on Windows 11, Python 3.12 and Node.js 24 before the initial publication.
 These are regression diagnostics, not a held-out recognition-accuracy evaluation.
 

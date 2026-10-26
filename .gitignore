@@ -2,6 +2,7 @@
 .venv/
 venv/
 node_modules/
+.setup-npm-cache/
 models/
 *.pth
 *.pt

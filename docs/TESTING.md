@@ -55,6 +55,14 @@ actual bytes to the model. Reference equations remain in test code and are never
 sent as inference answers. Assertions compare the UI with actual model/formatter
 output; they do not establish that every recognized equation is correct.
 
+The [fresh Windows release record](FRESH_INSTALL.md) gives executed versions,
+commands and results for a new environment and new checkpoint downloads. Its
+additional `release-workflow-checks.js` and `timeout-recovery-check.js` exercise
+real cancellation, input replacement, authored PDF page states and a real
+test-only shortened deadline. Run `tests/integration/make_release_inputs.py`
+first to generate their original disposable inputs. These checks do not use API
+answer doubles and do not establish audible screen-reader success.
+
 ## Privacy and release checks
 
 Before publishing, inspect the Git index as the authoritative publication list.
